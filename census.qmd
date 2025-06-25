@@ -1,0 +1,27 @@
+---
+title: "NYC census tracts"
+format: html
+execute: 
+  echo: false
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+# Load the CSV file
+nyc_data <- read_csv("nyc_tracts.csv")
+```
+
+```{r}
+#| warning: false
+# Plot: Median Income by Race (boxplot)
+ggplot(nyc_data, aes(x = race, y = med_income, fill = race)) +
+  geom_boxplot() +
+  labs(
+    title = "Median Income by Race in NYC Census Tracts",
+    x = "Race",
+    y = "Median Income (USD)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
+```
